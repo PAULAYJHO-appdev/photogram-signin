@@ -13,7 +13,7 @@
 #
 
 class User < ApplicationRecord
-
+  has_many :photos, foreign_key: :owner_id
   validates(:username,
     {
       :presence => true,
@@ -21,7 +21,7 @@ class User < ApplicationRecord
     }
   )
 
-  has_secure_password
+has_secure_password
 
   def comments
     return Comment.where({ :author_id => self.id })

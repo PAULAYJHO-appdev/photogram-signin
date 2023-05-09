@@ -22,3 +22,4 @@ class Comment < ApplicationRecord
     return Photo.where({ :id => self.photo_id }).at(0)
   end
 end
+

@@ -14,28 +14,43 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
 
-<body>
+  <body>
+
   <nav>
-    <ul>
-      <li><a href="/user_sign_up">Sign Up</a></li>
-      <li><a href="/user_sign_out">Sign Out</a></li>
-      <li><a href="/users">Users</a></li> 
-      <li><a href="/photos">Photos</a></li>
-      <li><%= session.fetch(:user_id)%></li>
-    </ul>
+    <ul> 
+      <li> 
+        <a href="/user_sign_up">Sign Up</a>
+      </li>
+      <li> 
+        <a href="/user_sign_out">Sign Out</a>
+      </li>
+      <li> 
+        <a href="/users">Users</a>
+      </li>
+      <li> 
+        <a href="/photos">Photos</a>
+      </li>
+      
+      <li> 
+          <% if session[:user_id] %>
+    <%= session[:user_id] %>
+  <% else %>
+    Not logged in
+  <% end %>
+      </li>
+    </ul> 
   </nav>
 
 <% if  notice.present? %>
   <div style ="border: thin green solid; color: green">
     <%= notice %>
   </div>
- <% end %>
-<% if alert.present? %>
-  <div style="border: thin red solid; color: red">
+<% end %>
+<% if  alert.present? %>
+   <div style = "border: thin red solid; color: red">
     <%= alert %>
   </div>
-<% end %>
-  
-  <%= yield %>
-</body>
+  <% end %>
+    <%= yield %>
+  </body>
 </html>
